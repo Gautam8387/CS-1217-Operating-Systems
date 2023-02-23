@@ -1,0 +1,24 @@
+*.asm
+*.d
+*.sym
+_*
+##############
+# *.img
+# *.out
+# *.o
+# mkfs
+# entryother
+# initcode
+##############
+kernel
+user1
+userfs
+usertests
+xv6.img
+vectors.S
+bochsout.txt
+bootblock
+bootother
+bootother.out
+parport.out
+fmt

@@ -1,0 +1,12 @@
+# Assignment 2
+
+## CS1217 Operating Systems (Spring 2023)
+
+**If you have not set up Git Credentials on your VMs, please check the README from Assignment 2**
+
+1. Clone this repository using the SSH link from the dropdown labelled *Code* at the top of the page
+2. Every time you make significant progress on the coding aspect of the assignment, make a commit *with a meaningful commit message*
+3. You may use branches to streamline your work (not required), but **make sure that your final code is on the main branch**. We will only evaluate code on the main branch of your repositories.
+4. For the non-code sections, submit a PDF on Google Classroom that has been named according to the naming conventions described in the Assignment Document on Google Classroom
+
+All the best!
