@@ -1,0 +1,10 @@
+# ignore folder __pycache__ 
+__pycache__/
+# ignore jos.out file
+jos.out
+# ignore .pyc files
+*.pyc
+# ignore folder obj
+obj/
+# ignore file .gdbinit
+.gdbinit
