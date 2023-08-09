@@ -1,0 +1,40 @@
+void
+scheduler(void)
+{
+  struct proc *p;
+  struct cpu *c = mycpu();
+  c->proc = 0;
+  
+  for(;;){
+    // Enable interrupts on this processor.
+    // STI — Set Interrupt Flag
+    sti();
+
+    // Loop over process table looking for process to run.
+    acquire(&ptable.lock);
+    // the &ptable.proc[NPROC] is the address of the last element of the ptable.proc array.
+    for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+      if(p->state != RUNNABLE)
+        continue;
+
+      // Switch to chosen process.  It is the process's job
+      // to release ptable.lock and then reacquire it
+      // before jumping back to us.
+      c->proc = p;
+      // the switchuvm(p) will do the switching of the kernel virtual memory to the process's virtual memory.
+      switchuvm(p);
+      p->state = RUNNING;
+      // Now the process is running, so we can switch to it.
+      // The swtch(&(c->scheduler), p->context)  is the content switch. It will save the current context and load the new context.
+      swtch(&(c->scheduler), p->context);
+      // The switchkvm function will switch the kernel virtual memory to the process's virtual memory.
+      switchkvm();
+
+      // Process is done running for now.
+      // It should have changed its p->state before coming back.
+      c->proc = 0;
+    }
+    release(&ptable.lock);
+
+  }
+}
